@@ -28,6 +28,7 @@ def onmessage(update,bot:ObigramClient):
         elif '/list' in msgText:
             if len(blackouts) != 0:
                 for f in blackouts:
+                    main = check_main(f)
                     reply_msg += f'🕯 @{f} ({main})\n'
                 bot.sendMessage(update.message.chat.id,reply_msg)
             else:
