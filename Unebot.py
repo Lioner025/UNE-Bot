@@ -26,7 +26,7 @@ def onmessage(update,bot:ObigramClient):
                 bot.sendMessage(update.message.chat.id,f'A @{username} ({main}) se le fue la corriente.')
             else:
                 bot.sendMessage(update.message.chat.id,f'La UNE le Acaba de meter Bankai al maja de Yisus, se lo tiene merecido x carero.')
-        elif '/tutorial' or '/help' in msgText:
+        elif '/tutorial' in msgText or '/help' in msgText:
             tuto_msg = 'Un bot creado x @Midgar_Einherjar (Lioner) para llevar un registro de los q no tienen luz.\n\n'
             tuto_msg += '🔹 __Comandos:__\n\n   🔸 /off : Te declara sin corriente.\n   🔸 /on : esta de mas explicarlo 😐.\n   🔸 /main (nombre del main)\n    PD: Se deja un espacio entre el comando y el name.\n    🔸 /list : Ver la lista de majases q no tienen luz para reirse de ellos ... y saber q pronto te le vas a sumar 🤣🤣🤣.'
             bot.sendMessage(update.message.chat.id,tuto_msg)
