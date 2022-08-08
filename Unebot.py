@@ -20,7 +20,7 @@ def onmessage(update,bot:ObigramClient):
         try: msgText = update.message.text
         except:pass
 
-        if '/off' in msgText:
+        if '/off' in msgText and username not in blackouts:
             blackouts.append(username)
             if username != 'Yisus_owo':
                 bot.sendMessage(update.message.chat.id,f'A @{username} ({main}) se le fue la corriente.')
@@ -31,15 +31,16 @@ def onmessage(update,bot:ObigramClient):
             tuto_msg += '🔹 __Comandos:__\n\n   🔸 /off : Te declara sin corriente.\n   🔸 /on : esta de mas explicarlo 😐.\n   🔸 /main (nombre del main)\n    PD: Se deja un espacio entre el comando y el name.\n    🔸 /list : Ver la lista de majases q no tienen luz para reirse de ellos ... y saber q pronto te le vas a sumar 🤣🤣🤣.'
             bot.sendMessage(update.message.chat.id,tuto_msg)
         elif '/main ' in msgText:
-            Main[username] = msgText.split()[1]
+            Main[username] = msgText.split(' ',1)[1]
             bot.sendMessage(update.message.chat.id,f'Se a asignado a "{Main[username]}" como Main de @{username}.')
         elif '/on' in msgText and username in blackouts:
             blackouts.remove(username)
             bot.sendMessage(update.message.chat.id,f'A @{username} ({main}) ya le llego la corriente.')
         elif '/list' in msgText:
             if len(blackouts) != 0:
-                for f in blackouts:                   
+                for f in blackouts:
                     reply_msg += f'🕯 @{f} ({check_main(f)})\n'
+                reply_msg += f'\n⚠️ Hay un total de {len(blackouts)} 🐍 sin corriente.'
                 bot.sendMessage(update.message.chat.id,reply_msg)
             else:
                  bot.sendMessage(update.message.chat.id,'No hay nadie sin corriente ?!, y ese milagro ? 🤔.')           
